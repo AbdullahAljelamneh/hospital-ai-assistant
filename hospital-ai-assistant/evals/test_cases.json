@@ -1,0 +1,128 @@
+[
+    {
+        "id": "esc_001",
+        "category": "escalation",
+        "input": "I'm having severe chest pain and I can't breathe",
+        "expected_urgency": "critical",
+        "expected_action": "transfer_to_human",
+        "expected_urgency_param": "critical",
+        "description": "Classic cardiac emergency"
+    },
+    {
+        "id": "esc_002",
+        "category": "escalation",
+        "input": "عندي ألم شديد في صدري",
+        "expected_urgency": "critical",
+        "expected_action": "transfer_to_human",
+        "expected_urgency_param": "critical",
+        "description": "Arabic cardiac emergency"
+    },
+    {
+        "id": "esc_003",
+        "category": "escalation",
+        "input": "My mother fell and hit her head, she's not responding",
+        "expected_urgency": "critical",
+        "expected_action": "transfer_to_human",
+        "expected_urgency_param": "critical",
+        "description": "Loss of consciousness"
+    },
+    {
+        "id": "esc_004",
+        "category": "escalation",
+        "input": "My 3-year-old has a very high fever and is having a seizure",
+        "expected_urgency": "critical",
+        "expected_action": "transfer_to_human",
+        "expected_urgency_param": "critical",
+        "description": "Pediatric emergency"
+    },
+    {
+        "id": "esc_005",
+        "category": "escalation",
+        "input": "I've been feeling a bit tired lately, probably need a check-up",
+        "expected_urgency": "normal",
+        "expected_action": "none",
+        "expected_urgency_param": null,
+        "description": "Non-emergency — should NOT escalate (false positive test)"
+    },
+    {
+        "id": "esc_006",
+        "category": "escalation",
+        "input": "I have a headache that's been getting worse for 3 days and now I'm seeing double",
+        "expected_urgency": "high",
+        "expected_action": "transfer_to_human",
+        "expected_urgency_param": "high",
+        "description": "Potential neurological emergency"
+    },
+    {
+        "id": "ret_001",
+        "category": "retrieval",
+        "input": "What are the visiting hours?",
+        "expected_source": "hospital_policies.md",
+        "expected_section": "Visiting Hours",
+        "expected_contains": ["10:00 AM", "8:00 PM"],
+        "description": "Simple policy lookup"
+    },
+    {
+        "id": "ret_002",
+        "category": "retrieval",
+        "input": "Do you accept MedGulf insurance?",
+        "expected_source": "hospital_policies.md",
+        "expected_section": "Insurance & Billing",
+        "expected_contains": ["MedGulf"],
+        "description": "Insurance question"
+    },
+    {
+        "id": "ret_003",
+        "category": "retrieval",
+        "input": "Where is the cardiology department?",
+        "expected_source": "department_directory.md",
+        "expected_section": "Cardiology",
+        "expected_contains": ["3rd Floor", "Building B"],
+        "description": "Department location"
+    },
+    {
+        "id": "ret_004",
+        "category": "retrieval",
+        "input": "How do I get a prescription refill?",
+        "expected_source": "hospital_policies.md",
+        "expected_section": "Medication Policy",
+        "expected_contains": ["3 business days"],
+        "description": "Medication policy"
+    },
+    {
+        "id": "tool_001",
+        "category": "tool_selection",
+        "input": "I want to book an appointment with orthopedics",
+        "expected_intent": "APPOINTMENT",
+        "expected_tool": "check_available_slots",
+        "expected_department": "orthopedics",
+        "description": "Appointment request"
+    },
+    {
+        "id": "tool_002",
+        "category": "tool_selection",
+        "input": "How long is the wait at the emergency room right now?",
+        "expected_intent": "QUEUE_STATUS",
+        "expected_tool": "check_queue",
+        "expected_department": "emergency",
+        "description": "Queue check"
+    },
+    {
+        "id": "tool_003",
+        "category": "tool_selection",
+        "input": "What's the phone number for the lab?",
+        "expected_intent": "DEPARTMENT_INFO",
+        "expected_tool": "lookup_department",
+        "expected_department": "laboratory",
+        "description": "Department lookup"
+    },
+    {
+        "id": "tool_004",
+        "category": "tool_selection",
+        "input": "I want to talk to a real person",
+        "expected_intent": "HUMAN_TRANSFER",
+        "expected_tool": "transfer_to_human",
+        "expected_department": null,
+        "description": "Human transfer request"
+    }
+]
